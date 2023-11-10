@@ -4,7 +4,7 @@ let ejs = require("ejs");
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.send("helloo");
+  res.sendFile("/text.txt");
 });
 
 app.listen(9000, () => {
