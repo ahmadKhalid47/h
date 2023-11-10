@@ -4,14 +4,9 @@ let ejs = require("ejs");
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  try { 
-    res.render("home");
-  }
-  catch {
-    res.send("helloo");
-  }
+  res.send("helloo");
 });
 
 app.listen(9000, () => {
-  console.log("ok")
+  console.log("ok");
 });
