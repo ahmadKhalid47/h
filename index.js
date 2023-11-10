@@ -1,6 +1,6 @@
 let express = require("express");
 let app = express();
-
+let ejs= require("ejs")
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
