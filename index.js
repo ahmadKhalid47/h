@@ -8,5 +8,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(9000, () => {
-  console.log("ok");
+  console.log("ok")
 });
