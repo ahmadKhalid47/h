@@ -7,10 +7,9 @@ app.set("view engine", "ejs");
 const uri =
   "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
 
-mongoose.connect(uri);
-
 app.get("/", async (req, res) => {
   try {
+    await mongoose.connect(uri);
     let testSchema = await mongoose.Schema({
       name: String,
       age: Number,
