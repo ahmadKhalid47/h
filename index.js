@@ -7,7 +7,7 @@ app.set("view engine", "ejs");
 const uri =
   "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
 
-  mongoose.connect(uri);
+mongoose.connect(uri);
 
 let testSchema = mongoose.Schema({
   name: String,
@@ -20,7 +20,7 @@ app.get("/", async (req, res) => {
     name: "ahmadTry",
     age: 35,
   }).save();
-  res.render("home");
+  // res.render("home");
 });
 
 app.listen(9000, () => {
