@@ -7,16 +7,8 @@ app.set("view engine", "ejs");
 const uri =
   "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
 
-try {
-    
-  mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-} catch(err) {
-  console.log(err)
-}
-  
+  mongoose.connect(uri);
+
 let testSchema = mongoose.Schema({
   name: String,
   age: Number,
