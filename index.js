@@ -9,14 +9,13 @@ const uri =
 
 mongoose.connect(uri);
 
-let testSchema = mongoose.Schema({
-  name: String,
-  age: Number,
-});
-let testModel = mongoose.model("newTry", testSchema);
-
 app.get("/", async (req, res) => {
   try {
+    let testSchema = await mongoose.Schema({
+      name: String,
+      age: Number,
+    });
+    let testModel = await mongoose.model("newTry", testSchema);
     await testModel({
       name: "ahmadTry",
       age: 35,
