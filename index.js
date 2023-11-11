@@ -16,11 +16,15 @@ let testSchema = mongoose.Schema({
 let testModel = mongoose.model("newTry", testSchema);
 
 app.get("/", async (req, res) => {
-  await testModel({
-    name: "ahmadTry",
-    age: 35,
-  }).save();
-  res.render("home");
+  try {
+    await testModel({
+      name: "ahmadTry",
+      age: 35,
+    }).save();
+    res.render("home");
+  } catch (err) {
+    res.send(err);
+  }
 });
 
 app.listen(9000, () => {
