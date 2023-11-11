@@ -4,7 +4,10 @@ let mongoose = require("mongoose");
 app.use(express.static(__dirname + "/views"));
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb://127.0.0.1:27017/user", {
+const uri =
+  "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
+
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -14,6 +17,7 @@ let testSchema = mongoose.Schema({
   age: Number,
 });
 let testModel = mongoose.model("newTry", testSchema);
+
 app.get("/", async (req, res) => {
   await testModel({
     name: "ahmadTry",
