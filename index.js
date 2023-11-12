@@ -7,7 +7,7 @@ app.set("view engine", "ejs");
 
 const uri =
   "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
-
+  
 app.get("/", async (req, res) => {
     res.render("home");
     await mongoose.connect(uri);
