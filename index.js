@@ -7,10 +7,13 @@ app.set("view engine", "ejs");
 
 const uri =
   "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
-  
-app.get("/", async (req, res) => {
+
+app.get("/", (req, res) => {
     res.render("home");
-    await mongoose.connect(uri);
+    });
+
+app.get("/click", async (req, res) => {
+  await mongoose.connect(uri);
     let testSchema = await mongoose.Schema({
       name: String,
       age: Number,
@@ -20,7 +23,9 @@ app.get("/", async (req, res) => {
       name: "ahmadTry",
       age: 35,
     }).save();
-});
+  res.redirect("/")
+})
+
 app.listen(9000, () => {
   console.log("ok");
 });
