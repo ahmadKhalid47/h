@@ -1,43 +1,29 @@
-const express = require("express");
-const mongoose = require("mongoose");
-
-const app = express();
-const port = process.env.PORT || 9000;
-const uri =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
-
+let express = require("express");
+let app = express();
+let mongoose = require("mongoose");
 app.use(express.static(__dirname + "/views"));
 app.set("view engine", "ejs");
 
+const uri =
+  "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
+
 app.get("/", async (req, res) => {
   try {
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
-    const testSchema = new mongoose.Schema({
+    res.render("home");
+    await mongoose.connect(uri);
+    let testSchema = await mongoose.Schema({
       name: String,
       age: Number,
     });
-
-    const TestModel = mongoose.model("newTry", testSchema);
-
-    await new TestModel({
+    let testModel = await mongoose.model("newTry", testSchema);
+    await testModel({
       name: "ahmadTry",
       age: 35,
     }).save();
-
-    res.render("home");
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  } finally {
-    mongoose.connection.close();
+    res.send(err);
   }
 });
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(9000, () => {
+  console.log("ok");
 });
