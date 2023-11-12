@@ -4,6 +4,7 @@ let mongoose = require("mongoose");
 app.use(express.static(__dirname + "/views"));
 app.set("view engine", "ejs");
 
+
 const uri =
   "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
 
