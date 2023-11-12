@@ -8,7 +8,6 @@ const uri =
   "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
 
 app.get("/", async (req, res) => {
-  try {
     res.render("home");
     await mongoose.connect(uri);
     let testSchema = await mongoose.Schema({
@@ -20,9 +19,6 @@ app.get("/", async (req, res) => {
       name: "ahmadTry",
       age: 35,
     }).save();
-  } catch (err) {
-    res.send(err);
-  }
 });
 app.listen(9000, () => {
   console.log("ok");
