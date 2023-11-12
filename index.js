@@ -24,7 +24,6 @@ app.get("/", async (req, res) => {
     res.send(err);
   }
 });
-
 app.listen(9000, () => {
   console.log("ok");
 });
