@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 
 const app = express();
 const port = process.env.PORT || 9000;
-
 const uri =
   process.env.MONGODB_URI ||
   "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
@@ -17,9 +16,6 @@ app.get("/", async (req, res) => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-
-    // Set the poolSize after connecting
-    mongoose.connection.set("poolSize", 5);
 
     const testSchema = new mongoose.Schema({
       name: String,
