@@ -34,19 +34,23 @@ let upload = multer({
 });
 
 app.post("/image", upload.single("image"), async (req, res) => {
-  try {
-    if (req.file == null) {
-      var tempImage = "notFound.jpg";
-    } else {
-      var tempImage = req.file.filename;
+  if (upload) {
+    try {
+      if (req.file == null) {
+        var tempImage = "notFound.jpg";
+      } else {
+        var tempImage = req.file.filename;
+      }
+      await testModel({
+        name: tempImage,
+        age: 35,
+      }).save();
+      res.redirect("/");
+    } catch (err) {
+      res.send(`<h1>${err}</h1>`);
     }
-    await testModel({
-      name: tempImage,
-      age: 35,
-    }).save();
-    res.redirect("/");
-  } catch (err) {
-    res.send(err);
+  } else {
+    res.send("no");
   }
 });
 
