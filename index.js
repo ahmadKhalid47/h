@@ -28,22 +28,26 @@ let upload = multer({
       cb(null, "./imagesFolder");
     },
     filename: function (req, file, cb) {
-      cb(null, file.fieldname + "" + Date.now() + ".jpg");
+      cb(null, file.fieldname + "-" + Date.now() + ".jpg");
     },
   }),
 });
 
 app.post("/image", upload.single("image"), async (req, res) => {
-  if (req.file == null) {
-    var tempImage = "notFound.jpg";
-  } else {
-    var tempImage = req.file.filename;
+  try {
+    if (req.file == null) {
+      var tempImage = "notFound.jpg";
+    } else {
+      var tempImage = req.file.filename;
+    }
+    await testModel({
+      name: tempImage,
+      age: 35,
+    }).save();
+    res.redirect("/");
+  } catch (err) {
+    res.send(err);
   }
-  await testModel({
-    name: tempImage,
-    age: 35,
-  }).save();
-  res.redirect("/");
 });
 
 app.listen(9000, () => {
