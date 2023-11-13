@@ -4,15 +4,15 @@ let mongoose = require("mongoose");
 app.use(express.static(__dirname + "/views"));
 app.set("view engine", "ejs");
 
-const uri =
-  "mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/";
+const uri ="mongodb+srv://ahmadrazakhalid110:oOAi1LGYaD8vQN1y@cluster0.cr0kdsf.mongodb.net/?retryWrites=true&w=majority"
 
-await mongoose.connect(uri);
-let testSchema = await mongoose.Schema({
+mongoose.connect(uri);
+
+let testSchema = mongoose.Schema({
   name: String,
   age: Number,
 });
-let testModel = await mongoose.model("newTry", testSchema);
+let testModel = mongoose.model("newTry", testSchema);
 
 app.get("/", (req, res) => {
   res.render("home");
